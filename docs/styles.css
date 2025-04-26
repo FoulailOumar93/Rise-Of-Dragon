@@ -1,40 +1,38 @@
-/* RESET + BACKGROUND */
+/* RESET & BACKGROUND */
 body,
 html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   font-family: "Arial", sans-serif;
   background: url("./img/Dragon.jpg") center center / cover no-repeat, #000;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* CONTAINER */
 .container {
   width: 90%;
   max-width: 800px;
-  min-height: 100vh;
-  padding: 20px;
+  min-width: 320px;
+  min-height: 100vh; /* pour éviter le bug mobile */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  text-align: center;
 }
 
-/* DRAGON IMAGE */
+/* IMAGE DU DRAGON */
 .dragon-logo {
-  width: 250px;
+  width: 280px;
   height: auto;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
-  animation: fadeIn 2s ease forwards;
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
 }
 
 /* TITRE */
@@ -43,25 +41,23 @@ h1 {
   color: crimson;
   text-shadow: 0 0 10px red, 0 0 20px orange, 0 0 30px gold;
   margin: 0;
-  animation: textAppear 2s ease 1s forwards;
-  opacity: 0;
-  transform: scale(0.8);
+  text-align: center;
 }
 
 /* BOUTON */
 .dragon-button {
   background-color: crimson;
   color: white;
-  padding: 14px 28px;
-  font-size: 1.3rem;
-  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 1.4rem;
+  border-radius: 10px;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 0 20px red;
+  box-shadow: 0 0 25px red;
   border: none;
   transition: transform 0.3s, background-color 0.3s;
+  user-select: none;
 }
-
 .dragon-button:hover {
   background-color: darkred;
   transform: scale(1.05);
@@ -69,43 +65,30 @@ h1 {
 
 /* FEU */
 .fire {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   background-color: rgba(255, 69, 0, 0.8);
   border-radius: 50%;
-  margin-top: 20px;
   opacity: 0;
   transform: scale(0);
   transition: all 0.5s ease;
-}
-
-.fire.active {
-  opacity: 1;
-  transform: scale(1.3);
-  animation: firePulse 1.5s infinite ease-in-out;
 }
 
 /* TEXTE D'INVOCATION */
 .dragon-text {
   opacity: 0;
   transform: translateY(10px);
-  transition: all 0.6s ease;
-  margin-top: 10px;
+  transition: all 0.5s ease;
+  text-align: center;
 }
-
-.dragon-text.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .dragon-text h2 {
-  color: gold;
   font-size: 1.5rem;
+  color: gold;
+  margin: 0 0 5px 0;
 }
-
 .dragon-text p {
-  color: lightgoldenrodyellow;
   font-size: 1.1rem;
+  color: lightgoldenrodyellow;
 }
 
 /* FOOTER */
@@ -113,55 +96,74 @@ h1 {
   margin-top: auto;
   font-size: 0.9rem;
   color: #ccc;
+  text-align: center;
   opacity: 0.7;
   user-select: none;
-  transition: opacity 0.3s, color 0.3s;
+}
+.dragon-footer:hover {
+  opacity: 1;
+  color: lightgoldenrodyellow;
+  text-shadow: 0 0 10px gold;
 }
 
-.dragon-footer:hover {
-  color: lightgoldenrodyellow;
+/* ETATS ACTIFS */
+.fire.active {
   opacity: 1;
+  transform: scale(1.2);
+  animation: dragon-fire 1s ease-out forwards,
+    pulse-fire 1.5s infinite ease-in-out;
+}
+.dragon-text.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ANIMATIONS */
-@keyframes fadeIn {
+@keyframes dragon-fire {
   0% {
-    opacity: 0;
-    transform: translateY(-20px);
+    transform: scale(0.3);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
   }
   100% {
+    transform: scale(1.2);
     opacity: 1;
-    transform: translateY(0);
   }
 }
-
-@keyframes textAppear {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes firePulse {
+@keyframes pulse-fire {
   0%,
   100% {
-    box-shadow: 0 0 30px 15px rgba(255, 69, 0, 0.8);
+    box-shadow: 0 0 30px 15px rgba(255, 69, 0, 0.9);
   }
   50% {
     box-shadow: 0 0 60px 30px rgba(255, 140, 0, 1);
   }
 }
 
-/* RESPONSIVE */
-@media screen and (max-width: 768px) {
-  .dragon-logo {
-    width: 200px;
-  }
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
   h1 {
     font-size: 2.2rem;
   }
+  .dragon-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+  .dragon-logo {
+    width: 200px;
+  }
+  .fire {
+    width: 100px;
+    height: 100px;
+  }
+  .dragon-text h2 {
+    font-size: 1.3rem;
+  }
+  .dragon-text p {
+    font-size: 1rem;
+  }
 }
+/* TABLET */
