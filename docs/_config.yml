@@ -1,0 +1,5 @@
+# _config.yml - Configuration de base pour GitHub Pages
+
+title: "RISE OF DRAGON"
+description: "Site interactif pour déclencher un feu sacré avec CSS"
+theme: jekyll-theme-minimal

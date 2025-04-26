@@ -1,0 +1,167 @@
+/* RESET + BACKGROUND */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+  background: url("./img/Dragon.jpg") center center / cover no-repeat, #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTAINER */
+.container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+/* DRAGON IMAGE */
+.dragon-logo {
+  width: 250px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+  animation: fadeIn 2s ease forwards;
+}
+
+/* TITRE */
+h1 {
+  font-size: 2.8rem;
+  color: crimson;
+  text-shadow: 0 0 10px red, 0 0 20px orange, 0 0 30px gold;
+  margin: 0;
+  animation: textAppear 2s ease 1s forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* BOUTON */
+.dragon-button {
+  background-color: crimson;
+  color: white;
+  padding: 14px 28px;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 20px red;
+  border: none;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.dragon-button:hover {
+  background-color: darkred;
+  transform: scale(1.05);
+}
+
+/* FEU */
+.fire {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(255, 69, 0, 0.8);
+  border-radius: 50%;
+  margin-top: 20px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s ease;
+}
+
+.fire.active {
+  opacity: 1;
+  transform: scale(1.3);
+  animation: firePulse 1.5s infinite ease-in-out;
+}
+
+/* TEXTE D'INVOCATION */
+.dragon-text {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s ease;
+  margin-top: 10px;
+}
+
+.dragon-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dragon-text h2 {
+  color: gold;
+  font-size: 1.5rem;
+}
+
+.dragon-text p {
+  color: lightgoldenrodyellow;
+  font-size: 1.1rem;
+}
+
+/* FOOTER */
+.dragon-footer {
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: #ccc;
+  opacity: 0.7;
+  user-select: none;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.dragon-footer:hover {
+  color: lightgoldenrodyellow;
+  opacity: 1;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes firePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 30px 15px rgba(255, 69, 0, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 60px 30px rgba(255, 140, 0, 1);
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .dragon-logo {
+    width: 200px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+}
