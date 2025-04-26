@@ -2,24 +2,24 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🔥 RISE OF DRAGON 🐲</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
-      <!-- Image du dragon -->
-      <img src="./img/Dragon.jpeg" alt="Logo du Dragon" class="dragon-logo" />
+      <!-- Image Dragon (cachée sur PC, visible sur mobile) -->
+      <img src="./img/Dragon.jpeg" alt="" class="dragon-logo" />
 
-      <!-- Texte principal -->
+      <!-- Titre principal -->
       <h1>🔥 RISE OF DRAGON 🐲</h1>
 
-      <!-- Bouton d'invocation -->
+      <!-- Bouton invocation -->
       <button id="invokeButton" class="dragon-button">
         Invoquer le Dragon
       </button>
 
-      <!-- Feu et texte cachés au départ -->
+      <!-- Feu et texte cachés -->
       <div class="fire"></div>
 
       <div class="dragon-text">
@@ -30,16 +30,14 @@
         </p>
       </div>
 
-      <!-- Footer -->
+      <!-- Footer dynamique -->
       <footer class="dragon-footer">
         &copy; <span id="year"></span> Foulail Oumar | Rise Of Dragon 🐲 Tous
         droits réservés.
       </footer>
     </div>
-    <!-- Fermeture du div.container -->
 
     <!-- Script -->
     <script src="dragon.js"></script>
   </body>
 </html>
-<!-- Fin du fichier index.html -->
